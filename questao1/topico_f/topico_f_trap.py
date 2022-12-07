@@ -30,20 +30,21 @@ def plot_func_graphic():
     plt.grid(True)
     plt.show()
 
-def rect_integration(a, b, rectangles):
+def trap_integration(a, b, trapezoids):
     accumulator = 0
 
     a = float(a)
     b = float(b)
-    rectangles = float(rectangles)
+    trapezoids = float(trapezoids)
 
-    i = (b - a) / rectangles
+    i = (b - a) / trapezoids
 
     x0 = a
     x1 = a + i
 
     while (a <= x1 <= b) or (a >= x1 >= b):
-        area = f((x0 + x1) / 2) * i
+        area = (f(x0) + f(x1)) * i/2
+        
         accumulator += area
 
         x1 += i
@@ -57,6 +58,6 @@ b = 4
 func_generate(a, b)
 plot_func_graphic()
 
-os.system("cls")
+os.system('cls')
 
-print(rect_integration(a, b, 70))
+print(trap_integration(a, b, 70))
